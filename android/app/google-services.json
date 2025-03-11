@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "547105467221",
+    "project_id": "flexfitness-9538f",
+    "storage_bucket": "flexfitness-9538f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:547105467221:android:b4139c1f557cf9d36e9ddc",
+        "android_client_info": {
+          "package_name": "com.example.bmindex"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFH5zIVRGAZbyhyyhMyyeCKMPAYGh9MyI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,306 @@
+name: bmindex
+description: "A new Flutter project."
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# In Windows, build-name is used as the major, minor, and patch parts
+# of the product and file versions while build-number is used as the build suffix.
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.0
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.8
+  flutter_3d_choice_chip: ^0.1.4
+  swipeable_button_view: ^0.0.2
+  page_transition: ^2.2.1
+  pretty_gauge: ^1.0.1
+  share_plus: ^10.1.4
+  shared_preferences: ^2.0.15
+  carousel_slider: ^5.0.0
+  flutter_gif: ^0.0.4
+  google_fonts: ^6.2.1
+  image_picker: ^1.1.2
+  get: ^4.7.2
+  http: ^1.3.0
+  email_auth: ^2.0.0
+  firebase_core: ^3.12.1
+  cloud_firestore: ^5.6.5
+  firebase_auth: ^5.5.1
+  firebase_messaging: ^15.2.4
+
+
+dev_dependencies:
+  flutter_launcher_icons: ^0.14.3
+
+flutter_icons:
+  android: true
+  image_path: "assets/icon/flex1.png"
+  icon_size: 48
+
+
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^5.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/man.png
+    - assets/images/women.png
+    - assets/images/flex1.png
+    - assets/images/img1.jpg
+    - assets/images/img2.jpg
+    - assets/images/img3.jpg
+    - assets/images/img4.jpg
+    - assets/images/img4(1).jpg
+    - assets/gif/gif1.gif
+    - assets/gif/gif2.gif
+    - assets/gif/gif3.gif
+    - assets/gif/gif4.gif
+    - assets/gif/gif5.gif
+    - assets/gif/gif6.gif
+    - assets/gif/gif7.gif
+    - assets/gif/gif8.gif
+    - assets/gif/gif9.gif
+    - assets/gif/gif10.gif
+    - assets/images/img5.jpg
+    - assets/gif/gif11.gif
+    - assets/gif/gif12.gif
+    - assets/gif/gif13.gif
+    - assets/gif/gif14.gif
+    - assets/gif/gif15.gif
+    - assets/images/img6.jpg
+    - assets/gif/gif16.gif
+    - assets/gif/gif17.gif
+    - assets/images/img7.jpg
+    - assets/gif/gif18.gif
+    - assets/images/img8.jpg
+    - assets/images/img9.jpg
+    - assets/images/img10.jpg
+    - assets/images/img11.jpg
+    - assets/images/img12.jpg
+    - assets/images/img13.jpg
+    - assets/images/img14.jpg
+    - assets/images/img15.jpg
+    - assets/images/img16.jpg
+    - assets/images/img54.jpg
+    - assets/images/img55.jpg
+    - assets/images/img56.jpg
+    - assets/images/img57.jpg
+    - assets/images/img58.jpg
+    - assets/images/img59.jpg
+    - assets/images/img60.jpg
+    - assets/images/img61.jpg
+    - assets/images/img62.jpg
+    - assets/images/img63.jpg
+    - assets/images/img64.jpg
+    - assets/images/img65.jpg
+    - assets/images/img66.jpg
+    - assets/images/img67.jpg
+    - assets/images/img68.jpeg
+    - assets/images/img69.jpg
+    - assets/images/img70.jpg
+    - assets/images/img71.jpg
+    - assets/images/img72.jpg
+    - assets/images/img73.jpg
+    - assets/images/img74.jpg
+    - assets/images/img75.jpg
+    - assets/images/img76.jpg
+    - assets/images/img77.jpg
+    - assets/images/img78.jpg
+    - assets/images/img79.jpg
+    - assets/images/img80.jpg
+    - assets/images/img81.jpg
+    - assets/images/img82.jpg
+    - assets/images/img83.jpg
+    - assets/images/img84.jpg
+    - assets/images/img85.jpg
+    - assets/images/img86.jpg
+    - assets/images/img87.jpg
+    - assets/images/img88.jpg
+    - assets/images/img89.jpg
+    - assets/images/img90.jpg
+    - assets/images/img91.jpg
+    - assets/images/img92.jpg
+    - assets/images/img93.jpg
+    - assets/images/img94.jpg
+    - assets/images/img95.jpg
+    - assets/images/img96.jpg
+    - assets/images/img97.jpg
+    - assets/images/img98.jpg
+    - assets/images/img99.jpg
+    - assets/images/img100.jpg
+    - assets/images/img101.jpg
+    - assets/images/img102.jpg
+    - assets/images/img103.jpg
+    - assets/images/img104.jpg
+    - assets/images/img105.jpg
+    - assets/images/img106.jpg
+    - assets/images/img107.jpg
+    - assets/images/img108.jpg
+    - assets/images/img109.jpg
+    - assets/images/img110.jpg
+    - assets/images/img111.jpg
+    - assets/images/img112.jpg
+    - assets/images/img113.jpg
+    - assets/images/img114.jpg
+    - assets/images/img115.jpg
+    - assets/images/img116.jpg
+    - assets/images/img117.jpg
+    - assets/images/img118.jpg
+    - assets/images/img119.jpg
+    - assets/images/img120.jpg
+    - assets/images/img121.jpg
+    - assets/images/img122.jpg
+    - assets/images/img123.jpg
+    - assets/images/img124.jpg
+    - assets/images/img125.jpg
+    - assets/images/img126.jpg
+    - assets/images/img127.jpg
+    - assets/images/img128.jpg
+    - assets/images/img129.jpg
+    - assets/images/img130.jpg
+    - assets/images/img131.jpg
+    - assets/images/img132.jpg
+    - assets/images/img133.jpg
+    - assets/images/img134.jpg
+    - assets/images/img135.jpg
+    - assets/images/img136.jpg
+    - assets/images/img137.jpg
+    - assets/images/img138.jpg
+    - assets/images/img139.jpg
+    - assets/images/img140.jpg
+    - assets/images/img141.jpg
+    - assets/images/img142.jpg
+    - assets/images/img143.jpg
+    - assets/images/img144.jpg
+    - assets/images/img145.jpg
+    - assets/images/img146.jpg
+    - assets/images/img147.jpg
+    - assets/images/img148.jpg
+    - assets/images/img149.jpg
+    - assets/images/img150.jpg
+    - assets/images/img151.jpg
+    - assets/images/img152.jpg
+    - assets/images/img153.jpg
+    - assets/images/img154.jpg
+    - assets/images/img155.jpg
+    - assets/images/img156.jpg
+    - assets/images/img157.jpg
+    - assets/images/img158.jpg
+    - assets/images/img159.jpg
+    - assets/images/img160.jpg
+    - assets/images/img161.jpg
+    - assets/images/img162.jpg
+    - assets/images/img163.png
+    - assets/images/img164.jpg
+    - assets/images/img165.png
+    - assets/images/img166.png
+    - assets/images/img167.jpg
+    - assets/images/bg.jpg
+    - assets/gif/gif19.gif
+    - assets/gif/gif20.gif
+    - assets/gif/gif21.gif
+    - assets/gif/gif22.gif
+    - assets/gif/gif23.gif
+    - assets/images/img17.jpg
+    - assets/images/img18.png
+    - assets/images/img19.png
+    - assets/images/img20.png
+    - assets/images/img21.png
+    - assets/images/img22.png
+    - assets/images/img23.png
+    - assets/images/img24.png
+    - assets/images/img25.png
+    - assets/images/img26.png
+    - assets/images/img27.png
+    - assets/images/img28.png
+    - assets/images/img29.png
+    - assets/images/img30.png
+    - assets/images/img31.png
+    - assets/images/img32.png
+    - assets/images/img33.png
+    - assets/images/img34.png
+    - assets/images/img35.png
+    - assets/images/img36.png
+    - assets/images/img37.png
+    - assets/images/img38.png
+    - assets/images/img39.png
+    - assets/images/img40.png
+    - assets/images/img41.png
+    - assets/images/img42.png
+    - assets/images/img43.png
+    - assets/images/img44.png
+    - assets/images/img45.png
+    - assets/images/img46.png
+    - assets/images/img47.jpg
+    - assets/images/img48.png
+    - assets/images/img49.png
+    - assets/images/img50.png
+    - assets/images/img51.png
+    - assets/images/img52.png
+    - assets/images/img53.png
+    - assets/images/img168.png
+
+
+
+
+      # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/to/resolution-aware-images
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/to/asset-from-package
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/to/font-from-package
