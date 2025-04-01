@@ -8,7 +8,7 @@ class Crunch extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Crunch Exercise',
+          'FLEX FITNESS',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,

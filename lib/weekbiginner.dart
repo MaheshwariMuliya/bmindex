@@ -42,7 +42,7 @@ class Weekbiginner extends StatelessWidget {
           },
         ),
       ),
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -53,7 +53,7 @@ class Weekbiginner extends StatelessWidget {
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: Colors.black,
               ),
             ),
             const SizedBox(height: 20),
@@ -132,7 +132,7 @@ class Weekbiginner extends StatelessWidget {
       style: const TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.bold,
-        color: Colors.white,
+        color: Colors.black,
       ),
     );
   }
@@ -144,7 +144,7 @@ class Weekbiginner extends StatelessWidget {
         text,
         style: const TextStyle(
           fontSize: 16,
-          color: Colors.white,
+          color: Colors.black,
         ),
       ),
     );
@@ -159,12 +159,12 @@ class Weekbiginner extends StatelessWidget {
           style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
         const SizedBox(height: 10),
         Table(
-          border: TableBorder.all(color: Colors.white),
+          border: TableBorder.all(color: Colors.black),
           columnWidths: const {
             0: FlexColumnWidth(2),
             1: FlexColumnWidth(1),
@@ -172,7 +172,7 @@ class Weekbiginner extends StatelessWidget {
           },
           children: [
             TableRow(
-              decoration: BoxDecoration(color: Color(0xFF1A1A2E)),
+              decoration: BoxDecoration(color: Colors.blue),
               children: [
                 _buildTableCell('Exercise', isHeader: true),
                 _buildTableCell('Sets', isHeader: true),
@@ -212,7 +212,7 @@ class Weekbiginner extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: Colors.black,
                     decoration: TextDecoration.underline,
                   ),
                 ),
@@ -222,7 +222,7 @@ class Weekbiginner extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: isHeader ? FontWeight.bold : FontWeight.normal,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
       ),

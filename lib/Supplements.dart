@@ -71,7 +71,7 @@ class Supplements extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             gradient: const LinearGradient(
-              colors: [Color(0xFF1A1A2E), Color.fromARGB(255, 197, 200, 201)],
+              colors: [Colors.blue, Color.fromARGB(255, 197, 200, 201)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),

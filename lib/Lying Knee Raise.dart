@@ -6,20 +6,19 @@ class LyingKneeRaise extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF1A1A2E),
       appBar: AppBar(
         title: const Text(
-          'Crunch Exercise',
+          'FLEX FITNESS',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            color: Colors.white, 
+            color: Colors.white,
             letterSpacing: 1.5,
           ),
         ),
         centerTitle: true,
         elevation: 10,
-        backgroundColor: Colors.blue, 
+        backgroundColor: Colors.blue,
         shadowColor: const Color.fromARGB(255, 206, 203, 203).withOpacity(0.5),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
@@ -28,65 +27,64 @@ class LyingKneeRaise extends StatelessWidget {
           },
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(
-                child: Image.asset(
-                  'assets/images/img63.jpg',
-                  height: 200,
-                ),
-              ),
-              SizedBox(height: 16),
-              Text(
-                'Exercise Profile',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white, // Font color white
-                ),
-              ),
-              SizedBox(height: 8),
-              _buildInfoRow('Main Muscle Group:', 'Abs'),
-              _buildInfoRow('Exercise Type:', 'Strength'),
-              _buildInfoRow('Equipment Required:', 'Bodyweight'),
-              _buildInfoRow('Mechanics:', 'Isolation'),
-              _buildInfoRow('Force Type:', 'Pull (Bilateral)'),
-              _buildInfoRow('Experience Level:', 'Beginner'),
-              _buildInfoRow('Secondary Muscles:', 'None'),
-              SizedBox(height: 16),
-              Text(
-                'Instructions',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white, // Font color white
-                ),
-              ),
-              SizedBox(height: 8),
-              _buildInstructionStep('1. Lay supine with legs bent and hands under your lower back for support.'),
-              _buildInstructionStep('2. Keep knees bent and raise them while contracting abs and exhaling.'),
-              _buildInstructionStep('3. Once above parallel, slowly lower legs back to start position.'),
-              _buildInstructionStep('4. Complete for assigned repetitions.'),
-              SizedBox(height: 16),
-              Text(
-                'Tips',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white, // Font color white
-                ),
-              ),
-              SizedBox(height: 8),
-              _buildTip('Exhale hard like blowing out candles to improve mind-muscle connection.'),
-              _buildTip('If lower back pain occurs, opt for anti-extension and anti-rotation movements.'),
-              _buildTip('Avoid placing hands behind the head to prevent neck strain.'),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 242, 242, 247),
+              Colors.blue,
             ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
         ),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: Image.asset(
+                    'assets/images/img63.jpg',
+                    height: 200,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                _buildSectionTitle('Exercise Profile'),
+                _buildInfoRow('Main Muscle Group:', 'Abs'),
+                _buildInfoRow('Exercise Type:', 'Strength'),
+                _buildInfoRow('Equipment Required:', 'Bodyweight'),
+                _buildInfoRow('Mechanics:', 'Isolation'),
+                _buildInfoRow('Force Type:', 'Pull (Bilateral)'),
+                _buildInfoRow('Experience Level:', 'Beginner'),
+                _buildInfoRow('Secondary Muscles:', 'None'),
+                const SizedBox(height: 16),
+                _buildSectionTitle('Instructions'),
+                _buildInstructionStep('1. Lay supine with legs bent and hands under your lower back for support.'),
+                _buildInstructionStep('2. Keep knees bent and raise them while contracting abs and exhaling.'),
+                _buildInstructionStep('3. Once above parallel, slowly lower legs back to start position.'),
+                _buildInstructionStep('4. Complete for assigned repetitions.'),
+                const SizedBox(height: 16),
+                _buildSectionTitle('Tips'),
+                _buildTip('Exhale hard like blowing out candles to improve mind-muscle connection.'),
+                _buildTip('If lower back pain occurs, opt for anti-extension and anti-rotation movements.'),
+                _buildTip('Avoid placing hands behind the head to prevent neck strain.'),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSectionTitle(String title) {
+    return Text(
+      title,
+      style: const TextStyle(
+        fontSize: 22,
+        fontWeight: FontWeight.bold,
+        color: Colors.black,
       ),
     );
   }
@@ -98,17 +96,16 @@ class LyingKneeRaise extends StatelessWidget {
         children: [
           Text(
             title,
-            style:
-             TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
-              color: Colors.white, 
+              color: Colors.black,
             ),
           ),
-          SizedBox(width: 5),
+          const SizedBox(width: 5),
           Text(
             value,
-            style: TextStyle(color: Colors.white),
-          ) 
+            style: const TextStyle(color: Colors.black),
+          )
         ],
       ),
     );
@@ -119,7 +116,7 @@ class LyingKneeRaise extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 4.0),
       child: Text(
         '- $text',
-        style: TextStyle(color: Colors.white), // Font color white
+        style: const TextStyle(color: Colors.black),
       ),
     );
   }
@@ -129,7 +126,7 @@ class LyingKneeRaise extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 4.0),
       child: Text(
         '• $text',
-        style: TextStyle(color: Colors.white), // Font color white
+        style: const TextStyle(color: Colors.black),
       ),
     );
   }

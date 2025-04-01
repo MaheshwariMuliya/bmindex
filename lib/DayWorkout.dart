@@ -13,7 +13,7 @@ import 'Military Press.dart';
 import 'Legcurl.dart';
 
 class DayWorkout extends StatelessWidget {
-  DayWorkout ({super.key});
+  DayWorkout({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class DayWorkout extends StatelessWidget {
         centerTitle: true,
         elevation: 10,
         backgroundColor: Colors.blue,
-        shadowColor: const Color.fromARGB(255, 206, 203, 203).withOpacity(0.5),
+        shadowColor: Colors.grey.withOpacity(0.5),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
@@ -39,106 +39,92 @@ class DayWorkout extends StatelessWidget {
           },
         ),
       ),
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Color.fromARGB(255, 241, 241, 247),Colors.blue],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
+      body: Container(
+        color: Colors.white, // Background color set to white
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const Text(
+                  'Workout Description',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black, // Text color set to black
+                  ),
                 ),
-              ),
+                const SizedBox(height: 10),
+                const Text(
+                  'New to weight training? This workout is for you. Designed to hit each muscle group with the big compound exercises once per week...',
+                  style: TextStyle(color: Colors.black, fontSize: 16), // Text color black
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Daily Workout Schedule:',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+                const SizedBox(height: 20),
+
+                // Monday Workout
+                const Text(
+                  'Monday: Chest/Triceps',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 10),
+                buildWorkoutTable(context, _mondayWorkout),
+                const SizedBox(height: 20),
+
+                // Wednesday Workout
+                const Text(
+                  'Wednesday: Back/Biceps',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 10),
+                buildWorkoutTable(context, _wednesdayWorkout),
+                const SizedBox(height: 20),
+
+                // Friday Workout
+                const Text(
+                  'Friday: Legs/Shoulders',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 10),
+                buildWorkoutTable(context, _fridayWorkout),
+              ],
             ),
           ),
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const Text(
-                      'Workout Description',
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      'New to weight training? This workout is for you. Designed to hit each muscle group with the big compound exercises once per week. Each workout day has 3-5 exercises.\n With this workout you focus should be on your technique not the weight you\'re lifting. Get the technique right in this workout then move on to a more advanced workout (Like this 4 day split) after 8-10 weeks.\nThe workout hits your chest/triceps on Monday, back/biceps on Wednesday and legs/shoulders on Friday. Abs and lower back should be worked after each workout with 2 exercises (see ab exercises).\n',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      'Daily Workout Schedule:',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-
-                    // Monday Workout
-                    const Text(
-                      'Monday: Chest/Triceps',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 10),
-                    buildWorkoutTable(context, _mondayWorkout),
-                    const SizedBox(height: 20),
-
-                    // Wednesday Workout
-                    const Text(
-                      'Wednesday: Back/Biceps',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 10),
-                    buildWorkoutTable(context, _wednesdayWorkout),
-                    const SizedBox(height: 20),
-
-                    // Friday Workout
-                    const Text(
-                      'Friday: Legs/Shoulders',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 10),
-                    buildWorkoutTable(context, _fridayWorkout),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
 
   Widget buildWorkoutTable(BuildContext context, List<Map<String, dynamic>> workoutData) {
     return Table(
-      border: TableBorder.all(color: Colors.white, width: 1),
+      border: TableBorder.all(color: Colors.black, width: 1), // Table border set to black
       columnWidths: const {
         0: FlexColumnWidth(2),
         1: FlexColumnWidth(1),
@@ -153,19 +139,31 @@ class DayWorkout extends StatelessWidget {
 
   TableRow buildTableHeader() {
     return const TableRow(
-      decoration: BoxDecoration(color: Colors.black54),
+      decoration: BoxDecoration(color: Colors.blue), // Header background color blue
       children: [
         Padding(
           padding: EdgeInsets.all(8.0),
-          child: Text('Exercise', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), textAlign: TextAlign.center),
+          child: Text(
+            'Exercise',
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
         ),
         Padding(
           padding: EdgeInsets.all(8.0),
-          child: Text('Sets', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), textAlign: TextAlign.center),
+          child: Text(
+            'Sets',
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
         ),
         Padding(
           padding: EdgeInsets.all(8.0),
-          child: Text('Reps', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), textAlign: TextAlign.center),
+          child: Text(
+            'Reps',
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
         ),
       ],
     );
@@ -185,7 +183,10 @@ class DayWorkout extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               exercise['exercise'],
-              style: const TextStyle(color: Colors.white, decoration: TextDecoration.underline),
+              style: const TextStyle(
+                color: Colors.black, // Text color set to black
+                decoration: TextDecoration.underline,
+              ),
               textAlign: TextAlign.center,
             ),
           ),
@@ -194,7 +195,7 @@ class DayWorkout extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             exercise['sets'],
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.black), // Text color black
             textAlign: TextAlign.center,
           ),
         ),
@@ -202,7 +203,7 @@ class DayWorkout extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             exercise['reps'],
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.black), // Text color black
             textAlign: TextAlign.center,
           ),
         ),

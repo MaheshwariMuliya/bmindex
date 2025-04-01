@@ -34,11 +34,11 @@ class Compoundexercises extends StatelessWidget {
         backgroundColor: Colors.blue,
         shadowColor: const Color.fromARGB(255, 206, 203, 203).withOpacity(0.5),
         leading: IconButton(
-        icon: const Icon(Icons.arrow_back, color: Colors.white),
-        onPressed: () {
-        Navigator.pop(context);
-      },
-      ),
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -62,7 +62,8 @@ class Compoundexercises extends StatelessWidget {
               'Add variety into your workout routine by using compound movements only. '
               'These exercises engage multiple muscle groups and are excellent for muscle building.',
             ),
-          _buildTable(context, 'Monday - Chest and Triceps', [
+            
+            _buildTable(context, 'Monday - Chest and Triceps', [
               {'Exercise': 'Barbell Bench Press', 'Sets': '4', 'Reps': '12', 'page': BenchPress()},
               {'Exercise': 'Incline Dumbbell Bench Press', 'Sets': '4', 'Reps': '10', 'page': InclineBenchPress()},
               {'Exercise': 'Close Grip Bench Press', 'Sets': '4', 'Reps': '8', 'page': BenchPress()},
@@ -75,69 +76,18 @@ class Compoundexercises extends StatelessWidget {
               {'Exercise': 'Stiff Leg Deadlift', 'Sets': '4', 'Reps': '8 each leg', 'page': Stifflegdeadlift()},
               {'Exercise': 'Lying Floor Leg Raise With Crunch', 'Sets': '5', 'Reps': '20', 'page': LyingLegRaiseWithHipThrust()},
             ]),
-               const SizedBox(height: 20),
-                    const Text(
-                      ' Notes',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                const Text(
-                      ' Increase weight on each set of squats and deadlifts Crunch: Lay on the floor, holding a small weight above your head. Bring your legs and arms up until they almost touch.Slowly lower down to 1 inch of the floor',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-            const SizedBox(height: 10),    
-                      Text(
-                      ' Wednesday: Rest Day',textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
+
             _buildTable(context, 'Thursday - Back and Biceps', [
               {'Exercise': 'Wide Grip Pull Up', 'Sets': '4', 'Reps': '12', 'page': PullUp()},
               {'Exercise': 'Chin Ups', 'Sets': '4', 'Reps': '10', 'page': ChinUps()},
               {'Exercise': 'Bent Over Barbell Rows', 'Sets': '4', 'Reps': '12', 'page': BarbellRow()},
               {'Exercise': 'Cable Row', 'Sets': '4', 'Reps': '10', 'page': Seatedcablerow()},
             ]),
-                const SizedBox(height: 20),
-                    const Text(
-                      ' Notes',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                const Text(
-                      'If you can\'t complete all the reps for pullups, complete the set with negatives (jump up and lower yourself down slowly). If you can not do pullups, use lat pull down.All these exercises work the biceps and back.',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-            const SizedBox(height: 10),  
 
             _buildTable(context, 'Friday - Shoulders, Traps and Abs', [
               {'Exercise': 'Military Press', 'Sets': '4', 'Reps': '12,10,8,6', 'page': Militarypress()},
               {'Exercise': 'Alternate Arm Seated Dumbbell Press', 'Sets': '4', 'Reps': '10', 'page': SeatedDumbbellPress()},
               {'Exercise': 'Shrugs', 'Sets': '4', 'Reps': '8', 'page': DumbbellShrug()},
-              {'Exercise': 'Abdominal Air Bike', 'Sets': '5', 'Reps': '20', 'page': BackExtension()},
-            ]),
-
-            
-            _buildTable(context, 'Abs', [
               {'Exercise': 'Abdominal Air Bike', 'Sets': '5', 'Reps': '20', 'page': BackExtension()},
             ]),
 
@@ -153,7 +103,7 @@ class Compoundexercises extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Text(
         title,
-        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
       ),
     );
   }
@@ -163,7 +113,7 @@ class Compoundexercises extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 8.0),
       child: Text(
         text,
-        style: const TextStyle(fontSize: 16, color: Colors.white),
+        style: const TextStyle(fontSize: 16, color: Colors.black),
       ),
     );
   }
@@ -182,7 +132,7 @@ class Compoundexercises extends StatelessWidget {
           },
           children: [
             TableRow(
-              decoration: BoxDecoration(color: Color(0xFF1A1A2E)),
+              decoration: BoxDecoration(color: Colors.blue),
               children: [
                 _buildTableCell('Exercise', isHeader: true),
                 _buildTableCell('Sets', isHeader: true),
@@ -224,7 +174,11 @@ class Compoundexercises extends StatelessWidget {
               )
             : Text(
                 text,
-                style: TextStyle(fontSize: 16, fontWeight: isHeader ? FontWeight.bold : FontWeight.normal, color: Colors.black),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: isHeader ? FontWeight.bold : FontWeight.normal,
+                  color: Colors.black,
+                ),
               ),
       ),
     );

@@ -29,7 +29,7 @@ class Gainmass extends StatelessWidget {
         ),
         centerTitle: true,
         elevation: 10,
-        backgroundColor:Colors.blue,
+        backgroundColor: Colors.blue,
         shadowColor: const Color.fromARGB(255, 206, 203, 203).withOpacity(0.5),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
@@ -38,7 +38,7 @@ class Gainmass extends StatelessWidget {
           },
         ),
       ),
-      backgroundColor: Colors.blue, 
+      backgroundColor: Colors.white, 
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -50,20 +50,19 @@ class Gainmass extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
               const SizedBox(height: 10),
               const Text(
-                'The problem: you\'re just starting and don\'t want to waste time in the gym. You want to build muscle as quickly as possible, and not fail like so many other beginners do.\n\n'
-                'Solution: a 20-week quick-start program that takes you from point A to point Z, providing you with specific workout plans that will help you reach the level of success you are after.\n\n'
+                'The problem: you\'re just starting and don\'t want to waste time in the gym...'
                 'This workout program features 3 specific stages:\n\n'
-                'Stage 1 - Neuromuscular Adaptation Stage: Weight is moderate. The focus during this 4-week stage is on learning the exercises, practicing proper form, and developing the habit of actually getting to the gym and not missing workouts. You will be working out only twice a week, but using the same workout each day.\n\n'
-                'Stage 2 - Conditioning and Building Stage: Another 4-week stage. You will be training 3 days per week, and learning how to push yourself properly on each exercise. Sets will be maximized, and you will start to add strength and muscle at a quality rate.\n\n'
-                'Stage 3 - Maximizing Beginner Gains Stage: This is a 12-week stage that will have you working out 4 days per week. The format will be an upper/lower style of training. You will get as strong as possible in conventional muscle-building rep ranges and will never waste a set.',
+                'Stage 1 - Neuromuscular Adaptation Stage: Weight is moderate...\n\n'
+                'Stage 2 - Conditioning and Building Stage: Another 4-week stage...\n\n'
+                'Stage 3 - Maximizing Beginner Gains Stage: This is a 12-week stage...',
                 style: TextStyle(
                   fontSize: 16,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
               const SizedBox(height: 20),
@@ -73,15 +72,7 @@ class Gainmass extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              const SizedBox(height: 10),
-              const Text(
-                'This stage is a feeling-out stage. Start with a moderately light weight and only add weight to an exercise when the sets feel relatively easy. Don\'t rush into weight additions. First and foremost, you want to develop consistency and an understanding of exercise form. Once you hit a nice stride, then slowly add weight as you can.',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
               const SizedBox(height: 10),
@@ -93,15 +84,7 @@ class Gainmass extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              const SizedBox(height: 10),
-              const Text(
-                'Using good form, start to focus on pushing sets for more and more reps. You do not want to train to failure or perform reps with sloppy form. Add weight when you reach the recommended number of reps for a set.',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
               const SizedBox(height: 10),
@@ -113,15 +96,7 @@ class Gainmass extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              const SizedBox(height: 10),
-              const Text(
-                'Push every set for as many reps as possible - no exceptions. Never waste a set. Stop each set when you feel like you might fail on the next rep or when your form starts to slip. Add weight when you reach the recommended number of reps per set.',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
               const SizedBox(height: 10),
@@ -135,7 +110,7 @@ class Gainmass extends StatelessWidget {
 
   Widget buildWorkoutTable(BuildContext context, List<Map<String, dynamic>> workoutData) {
     return Table(
-      border: TableBorder.all(color: Colors.white),
+      border: TableBorder.all(color: Colors.black), // Black border
       columnWidths: const {
         0: FlexColumnWidth(2),
         1: FlexColumnWidth(1),
@@ -150,7 +125,7 @@ class Gainmass extends StatelessWidget {
 
   TableRow buildTableHeader() {
     return const TableRow(
-      decoration: BoxDecoration(color: Color(0xFF1A1A2E)),
+      decoration: BoxDecoration(color: Colors.blue), // Blue header
       children: [
         Padding(
           padding: EdgeInsets.all(8.0),
@@ -182,7 +157,7 @@ class Gainmass extends StatelessWidget {
 
   TableRow buildTableRow(BuildContext context, Map<String, dynamic> exercise) {
     return TableRow(
-      decoration: BoxDecoration(color: Color(0xFF3A3A56)),
+      decoration: const BoxDecoration(color: Colors.white),
       children: [
         GestureDetector(
           onTap: () {
@@ -196,7 +171,7 @@ class Gainmass extends StatelessWidget {
             child: Text(
               exercise['exercise'],
               style: const TextStyle(
-                color: Colors.white,
+                color: Colors.black,
                 decoration: TextDecoration.underline,
               ),
               textAlign: TextAlign.center,
@@ -207,7 +182,7 @@ class Gainmass extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             exercise['sets'],
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.black),
             textAlign: TextAlign.center,
           ),
         ),
@@ -215,7 +190,7 @@ class Gainmass extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             exercise['reps'],
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.black),
             textAlign: TextAlign.center,
           ),
         ),

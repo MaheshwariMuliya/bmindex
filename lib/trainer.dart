@@ -1,7 +1,8 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'homescreen.dart';
 import 'trainerotpscreen.dart';
+import 'admin_dashboard.dart'; 
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -26,9 +27,19 @@ class _LoginState extends State<Login> {
 
     setState(() => isLoading = true);
 
+    // Admin Login Condition
+    if (email == "admin" && password == "admin") {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => AdminDashboard()),
+      );
+      setState(() => isLoading = false);
+      return;
+    }
+
     try {
       QuerySnapshot<Map<String, dynamic>> querySnapshot = await FirebaseFirestore.instance
-          .collection('trainers') 
+          .collection('trainers')
           .where('email', isEqualTo: email)
           .limit(1)
           .get();
@@ -139,14 +150,14 @@ class _LoginState extends State<Login> {
                         child: Text.rich(
                           TextSpan(
                             text: "Don't have an account? ",
-                            style: const TextStyle(fontSize: 16, color: Colors.black), 
+                            style: const TextStyle(fontSize: 16, color: Colors.black),
                             children: [
                               TextSpan(
                                 text: "Sign up",
                                 style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
-                                  color: Color.fromARGB(255, 32, 105, 201), 
+                                  color: Color.fromARGB(255, 32, 105, 201),
                                 ),
                               ),
                             ],

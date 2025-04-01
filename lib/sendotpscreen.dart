@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'trainerdetails.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -11,6 +13,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _otpController = TextEditingController();
 
@@ -19,7 +22,15 @@ class _LoginPageState extends State<LoginPage> {
   bool isOTPSent = false;
 
   Future<void> sendOTP() async {
+    final String userName = _userNameController.text.trim();
     final String email = _emailController.text.trim().toLowerCase();
+
+    if (userName.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Please enter your username")),
+      );
+      return;
+    }
 
     if (email.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -60,54 +71,61 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-  Future<void> verifyOTP() async {
-    final String email = _emailController.text.trim().toLowerCase();
-    final String otp = _otpController.text.trim();
+Future<void> verifyOTP() async {
+  final String userName = _userNameController.text.trim();
+  final String email = _emailController.text.trim().toLowerCase();
+  final String otp = _otpController.text.trim();
 
-    if (email.isEmpty || otp.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Please enter a valid email and OTP")),
-      );
-      return;
-    }
-
-    setState(() => isVerifyingOTP = true);
-
-    try {
-      final response = await http.post(
-        Uri.parse("https://emailverification-llm9.onrender.com/api/verifyOTP"),
-        headers: {"Content-Type": "application/json"},
-        body: jsonEncode({"email": email, "enteredOtp": otp}),
-      );
-
-      final result = jsonDecode(response.body);
-      print("Response from verifyOTP: $result");
-
-      if (response.statusCode == 200 && result["Status"] == 200) {
-        String message = result["Message"] ?? "OTP verified successfully";
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
-
-        Map<String, dynamic>? userDetails = result["Result"];
-
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => TrainerListScreen(userDetails: userDetails),
-          ),
-        );
-      } else {
-        String errorMessage = result["Message"] ?? "Invalid OTP. Please try again.";
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(errorMessage)));
-      }
-    } catch (e) {
-      print("Error in verifyOTP: $e");
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Failed to verify OTP. Please try again.")),
-      );
-    } finally {
-      setState(() => isVerifyingOTP = false);
-    }
+  if (userName.isEmpty || email.isEmpty || otp.isEmpty) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Please enter all fields: Username, Email, and OTP")),
+    );
+    return;
   }
+
+  setState(() => isVerifyingOTP = true);
+
+  try {
+    final response = await http.post(
+      Uri.parse("https://emailverification-llm9.onrender.com/api/verifyOTP"),
+      headers: {"Content-Type": "application/json"},
+      body: jsonEncode({"email": email, "enteredOtp": otp}),
+    );
+
+    final result = jsonDecode(response.body);
+    print("Response from verifyOTP: $result");
+
+    if (response.statusCode == 200 && result["Status"] == 200) {
+      String message = result["Message"] ?? "OTP verified successfully";
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+
+      Map<String, dynamic> userDetails = {
+        "name": userName,
+        "email": email,
+      };
+
+      await FirebaseFirestore.instance.collection('users').doc(email).set(userDetails, SetOptions(merge: true));
+
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => TrainerListScreen(userDetails: userDetails),
+        ),
+      );
+    } else {
+      String errorMessage = result["Message"] ?? "Invalid OTP. Please try again.";
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(errorMessage)));
+    }
+  } catch (e) {
+    print("Error in verifyOTP: $e");
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Failed to verify OTP. Please try again.")),
+    );
+  } finally {
+    setState(() => isVerifyingOTP = false);
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -145,12 +163,14 @@ class _LoginPageState extends State<LoginPage> {
                 fit: BoxFit.cover,
               ),
               const SizedBox(height: 20),
-               TextField(
+
+              TextField(
+                controller: _userNameController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-                  hintText: "Enter User Name",
-                  labelText: "User Name",
-                  floatingLabelBehavior: FloatingLabelBehavior.never, 
+                  hintText: "Enter Username",
+                  labelText: "Username",
+                  floatingLabelBehavior: FloatingLabelBehavior.never,
                   prefixIcon: const Icon(Icons.person, color: Colors.blue),
                   filled: true,
                   fillColor: Colors.white,
@@ -163,41 +183,40 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 20),
 
               TextField(
-  controller: _emailController,
-  keyboardType: TextInputType.emailAddress,
-  decoration: InputDecoration(
-    hintText: "Enter Email",
-    labelText: "Email",
-    floatingLabelBehavior: FloatingLabelBehavior.never, 
-    prefixIcon: const Icon(Icons.email, color: Colors.blue),
-    filled: true,
-    fillColor: Colors.white,
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30),
-      borderSide: BorderSide.none,
-    ),
-    suffixIcon: Padding(
-      padding: const EdgeInsets.only(right: 8),
-      child: TextButton(
-        onPressed: isSendingOTP || isOTPSent ? null : sendOTP,
-        child: isSendingOTP
-            ? const SizedBox(
-                width: 20,
-                height: 20,
-                child: CircularProgressIndicator(color: Colors.blue, strokeWidth: 2),
-              )
-            : const Text(
-                "Send OTP",
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontWeight: FontWeight.bold,
+                controller: _emailController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  hintText: "Enter Email",
+                  labelText: "Email",
+                  floatingLabelBehavior: FloatingLabelBehavior.never,
+                  prefixIcon: const Icon(Icons.email, color: Colors.blue),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: BorderSide.none,
+                  ),
+                  suffixIcon: Padding(
+                    padding: const EdgeInsets.only(right: 8),
+                    child: TextButton(
+                      onPressed: isSendingOTP || isOTPSent ? null : sendOTP,
+                      child: isSendingOTP
+                          ? const SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: CircularProgressIndicator(color: Colors.blue, strokeWidth: 2),
+                            )
+                          : const Text(
+                              "Send OTP",
+                              style: TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                    ),
+                  ),
                 ),
               ),
-      ),
-    ),
-  ),
-),
-
 
               const SizedBox(height: 20),
 
@@ -207,7 +226,7 @@ class _LoginPageState extends State<LoginPage> {
                 decoration: InputDecoration(
                   hintText: "Enter OTP",
                   labelText: "OTP",
-                  floatingLabelBehavior: FloatingLabelBehavior.never, 
+                  floatingLabelBehavior: FloatingLabelBehavior.never,
                   prefixIcon: const Icon(Icons.lock, color: Colors.blue),
                   filled: true,
                   fillColor: Colors.white,
@@ -227,22 +246,12 @@ class _LoginPageState extends State<LoginPage> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     foregroundColor: Colors.white,
-                    textStyle: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     padding: const EdgeInsets.symmetric(vertical: 14),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    elevation: 5,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                   ),
                   child: isVerifyingOTP
-                      ? const SizedBox(
-                          width: 24,
-                          height: 24,
-                          child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2),
-                        )
+                      ? const CircularProgressIndicator(color: Colors.white, strokeWidth: 2)
                       : const Text("Verify OTP"),
                 ),
               ),
@@ -253,5 +262,3 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
-
-

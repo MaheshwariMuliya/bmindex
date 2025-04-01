@@ -35,7 +35,7 @@ class Beginnerabworkout extends StatelessWidget {
             child: Container(
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Color(0xFF1E1E2C), Color(0xFF3A3A56)],
+                  colors: [Colors.white, Colors.white],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 ),

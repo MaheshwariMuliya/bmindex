@@ -176,7 +176,7 @@ class _HistoricalDataScreenState extends State<HistoricalDataScreen> {
         ),
         centerTitle: true,
         elevation: 10,
-        backgroundColor: Color(0xFF1E1E2C),
+        backgroundColor: Colors.blue,
         shadowColor: const Color.fromARGB(255, 206, 203, 203).withOpacity(0.5),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),

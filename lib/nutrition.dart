@@ -23,7 +23,7 @@ class Nutrition extends StatelessWidget {
         centerTitle: true,
         elevation: 10,
         backgroundColor: Colors.blue,
-        shadowColor: const Color.fromARGB(255, 206, 203, 203).withOpacity(0.5),
+        shadowColor: Colors.white.withOpacity(0.5),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
@@ -93,20 +93,20 @@ class Nutrition extends StatelessWidget {
             MaterialPageRoute(builder: (context) => destination),
           );
         },
-        leading: Icon(icon, size: 36, color: const Color.fromARGB(255, 28, 9, 36)),
+        leading: Icon(icon, size: 36, color:  Colors.blue),
         title: Text(
           title,
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: const Color.fromARGB(255, 34, 5, 43),
+            color:  Colors.black,
           ),
         ),
         subtitle: Text(
           subtitle,
           style: TextStyle(
             fontSize: 16,
-            color: const Color.fromARGB(255, 18, 4, 29),
+            color: Colors.black,
           ),
         ),
       ),

@@ -36,7 +36,7 @@ class Beginner extends StatelessWidget {
             child: Container(
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Color(0xFF1E1E2C), Color(0xFF3A3A56)],
+                  colors: [Colors.white, Colors.white],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 ),
@@ -86,12 +86,12 @@ class Beginner extends StatelessWidget {
           color: Colors.white, 
           borderRadius: BorderRadius.circular(20), 
           border: Border.all(
-            color: const Color.fromARGB(255, 87, 112, 124), 
+            color:  Colors.blue, 
             width: 2,
           ),
           boxShadow: [
             BoxShadow(
-              color: const Color.fromARGB(255, 87, 112, 124).withOpacity(0.5),
+              color:  Colors.blue.withOpacity(0.5),
               spreadRadius: 3,
               blurRadius: 10,
               offset: const Offset(0, 4),
